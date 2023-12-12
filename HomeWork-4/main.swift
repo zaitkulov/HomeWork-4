@@ -138,3 +138,75 @@ func showMenu() {
 }
 showMenu()
 
+//4.Задание: Справочник городов по странам
+
+var countryDatabase = [String: Set<String>]()
+func addCity() {
+    func addCity(country: String, city: String) {
+        countryDatabase[country] = Set(arrayLiteral: city)
+    }
+    print ("Введите страну:")
+    let userAnswerCountry = readLine()
+    guard let userAnswerCountry else { return }
+    guard !userAnswerCountry.isEmpty else { print("Вы ничего не ввели"); return }
+    print ("Введите город:")
+    let userAnswerCity = readLine()
+    guard let userAnswerCity else { return }
+    guard !userAnswerCity.isEmpty else { print("Вы ничего не ввели"); return }
+    addCity(country: userAnswerCountry, city: userAnswerCity)
+}
+func deleteCity() {
+    func deleteCity(country: String, city: String) {
+        countryDatabase[country]?.remove(city)
+    }
+    print ("Введите страну:")
+    let userAnswerCountry = readLine()
+    guard let userAnswerCountry else { return }
+    guard !userAnswerCountry.isEmpty else { print ("Вы ничего не ввели"); return }
+    print ("Введите город:")
+    let userAnswerCity = readLine()
+    guard let userAnswerCity else { return }
+    guard !userAnswerCity.isEmpty else { print ("Вы ничего не ввели"); return }
+    deleteCity(country: userAnswerCountry, city: userAnswerCity)
+}
+func viewCities() {
+    func viewCities(in country: String) {
+        print (countryDatabase[country] ?? "Данных нет")
+    }
+    print ("Введите страну:")
+    let userAnswerCountry = readLine()
+    guard let userAnswerCountry else { return }
+    guard !userAnswerCountry.isEmpty else { print ("Вы ничего не ввели"); return }
+    viewCities(in: userAnswerCountry)
+}
+func citiesByCountry() {
+    print ("""
+Выберите действие (выберите число):
+1 - Добавить город
+2 - Удалить город
+3 - Посмотреть города
+4 - Закрыть
+""")
+    let userAnswer = readLine()
+    switch userAnswer {
+    case "1":
+        addCity()
+        print("")
+        citiesByCountry()
+    case "2":
+        deleteCity()
+        print("")
+        citiesByCountry()
+    case "3":
+        viewCities()
+        print ("")
+        citiesByCountry()
+    case "4":
+        print ("Работа приложения завершена")
+    default:
+        print ("Ошибка ввода, попробуйте еще раз\n")
+        citiesByCountry()
+    }
+}
+citiesByCountry()
+
