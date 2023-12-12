@@ -210,3 +210,14 @@ func citiesByCountry() {
 }
 citiesByCountry()
 
+//5.Задание: Нахождение общих элементов двух массивов
+
+let arrayA = [1,2,3,4,5,6]
+let arrayB = [4,2,1,7,8,9]
+
+func commonElements(array1: [Int], array2: [Int]) -> [Int] {
+    Array(Set(array1).intersection(Set(array2)))
+}
+let result5 = commonElements(array1: arrayA, array2: arrayB)
+print (result5)
+
