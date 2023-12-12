@@ -234,6 +234,16 @@ func findCommonFriends(user1: String, user2: String) -> Set<String>? {
     return result
 }
 
-findCommonFriends(user1: "Alice", user2: "Eve")
+
+//7.Задание: Найти уникальные элементы в массиве
+
+let array7 = [1,2,2,4,7,1,3,8]
+
+func uniqueElements (array: [Int]) -> [Int] {
+    Array(Set(array7))
+}
+
+let result7 = uniqueElements(array: array7)
+print (result7)
 
 
