@@ -361,4 +361,32 @@ for number in numbers {
     print (result)
 }
 
+//11.Задание:Сжатые строки
+
+func compress(_ input: String) -> String {
+    var compressedString = ""
+    var currentChar: Character?
+    var count = 0
+    
+    for char in input {
+        if let current = currentChar {
+            if char == current {
+                count += 1
+            } else {
+                compressedString.append("\(current)\(count)")
+                currentChar = char
+                count = 1
+            }
+        } else {
+            currentChar = char
+            count = 1
+        }
+    }
+    if let current = currentChar {
+        compressedString.append("\(current)\(count)")
+    }
+    return compressedString.count < input.count ? compressedString : input
+}
+let result11 = compress("aabcccccaaaaa")
+print(result11)
 
