@@ -75,3 +75,34 @@ func mainMenu() {
 mainMenu()
 
 
+//2.Задание: Хранилище настроек.
+
+class SettingsStorage {
+    private var settings: [String: String] = [:]
+    
+    func setSetting(key: String, value: String) {
+        settings[key] = value
+        print("Setting '\(key)' is set to '\(value)'")
+    }
+    func getSetting(key: String) -> String? {
+        return settings[key]
+    }
+    func printAllSettings() {
+        print ("Current settings:")
+        for (key, value) in settings {
+            print ("\(key): \(value)")
+        }
+    }
+}
+let storage = SettingsStorage()
+storage.setSetting(key: "Language", value: "Russian")
+storage.setSetting(key: "Theme", value: "Dark")
+
+if let language = storage.getSetting(key: "Language") {
+    print ("Current laguage is \(language)")
+} else {
+    print ("Language settings not found")
+}
+
+storage.printAllSettings()
+
