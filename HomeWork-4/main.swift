@@ -246,4 +246,43 @@ func uniqueElements (array: [Int]) -> [Int] {
 let result7 = uniqueElements(array: array7)
 print (result7)
 
+//8.Задание: Телефонный справочник
+
+class PhoneBook {
+    var contacts: [String: String] = [:]
+    func addNumber(name: String, number: String) {
+        contacts[name] = number
+        print ("Номер \(number) добавлен для \(name) в справочник.")
+    }
+    func removeNumber(name:String) {
+        if let removeNumber = contacts.removeValue(forKey: name) {
+            print ("Номер \(removeNumber) удален для \(name) из справочника")
+        }
+    }
+    func findNumber(name: String) -> String? {
+        if let foundNumber = contacts[name] {
+            return foundNumber
+        } else {
+            print ("\(name) не найдено в справочнике.")
+            return nil
+        }
+    }
+}
+let phonebook = PhoneBook()
+
+phonebook.addNumber(name: "Shamil", number: "23423423")
+phonebook.addNumber(name: "Artyom", number: "09848933")
+phonebook.addNumber(name: "Islam", number: "23423445")
+
+if let ShamilNumber = phonebook.findNumber(name: "Shamil") {
+    print ("Найден номер Шамиля: \(ShamilNumber)")
+}
+phonebook.removeNumber(name: "Artyom")
+let ArtyomNumber = phonebook.findNumber(name: "Artyom")
+
+if let artyomNumber = ArtyomNumber {
+    print ("Найден номер Артема: \(ArtyomNumber))")
+} else {
+    print ("Артем не найден в справочнике")
+}
 
