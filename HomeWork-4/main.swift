@@ -286,3 +286,57 @@ if let artyomNumber = ArtyomNumber {
     print ("Артем не найден в справочнике")
 }
 
+//9.Задание: Реализация теста по умножению
+
+var questionAsked = Set<String>()
+var questionsAndAnswers = [String: Int]()
+var correctAnswers = 0
+
+func generateUniqueMultiplicationQuestion() -> (question: String, answer: Int) {
+    var question: String
+    var answer: Int
+    repeat {
+        let num1 = Int.random(in: 1...10)
+        let num2 = Int.random(in: 1...10)
+        question = "\(num1) * \(num2) = ?"
+        answer = num1 * num2
+    } while questionAsked.contains(question)
+    questionAsked.insert(question)
+    questionsAndAnswers[question] = answer
+    return (question, answer)
+}
+
+func determineGrade(correctAnswers: Int) -> String {
+    switch correctAnswers {
+    case 8...10:
+        return "Отлично!"
+    case 6...7:
+        return "Хорошо"
+    case 4...5:
+        return "Удовлетворительно"
+    default:
+        return "Неудовлетворительно"
+    }
+}
+for _ in 1...10 {
+    let questionAndAnswer = generateUniqueMultiplicationQuestion()
+    let question = questionAndAnswer.question
+    var correctAnswer = questionAndAnswer.answer
+    print (question)
+    
+    if let userAnswer = readLine(), let userAnswerInt = Int(userAnswer) {
+        if userAnswerInt == correctAnswer {
+            print ("Правильно!")
+            correctAnswers += 1
+        } else {
+            print ("Неправильно. Правильный ответ: \(correctAnswer)")
+        }
+    } else {
+        print ("Ошибка ввода. Правильный ответ: \(correctAnswer)")
+    }
+    print ("\n")
+}
+let result9 = determineGrade(correctAnswers: correctAnswers)
+print("Тест завершен. Ваша оценка: \(result9)")
+
+
