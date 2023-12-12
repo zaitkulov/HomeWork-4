@@ -340,3 +340,25 @@ let result9 = determineGrade(correctAnswers: correctAnswers)
 print("Тест завершен. Ваша оценка: \(result9)")
 
 
+//10.Задание: Склонение слова "монета"
+
+func coinCase(for number: Int) -> String {
+    let cases: [Int: String] = [1: "монета", 2: "монеты", 3: "монеты", 4: "монеты"]
+    let lastDigit = number % 10
+    let lastTwoDigits = number % 100
+    if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
+        return "монет"
+    }
+    if let result = cases[lastDigit] {
+        return "\(number) \(result)"
+    } else {
+        return ("\(number) монет")
+    }
+}
+let numbers = [1, 2, 5, 12, 23]
+for number in numbers {
+    let result = coinCase(for: number)
+    print (result)
+}
+
+
