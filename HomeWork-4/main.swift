@@ -390,3 +390,22 @@ func compress(_ input: String) -> String {
 let result11 = compress("aabcccccaaaaa")
 print(result11)
 
+//12.Задание: Поиск двух чисел, сумма которых равна заданному числу
+
+let nums = [1,2,3,4,5]
+let target = 9
+
+func findTwoSum(nums: [Int], target: Int) -> (Int,Int) {
+    var result = (0,0)
+    
+    for i in 0..<nums.count {
+        for j in i+1..<nums.count {
+            if nums[i] + nums[j] == target {
+                result = (nums[i], nums[j])
+            }
+        }
+    }
+    return result
+}
+print (findTwoSum(nums: nums, target: target))
+
