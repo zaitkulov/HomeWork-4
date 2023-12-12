@@ -221,3 +221,19 @@ func commonElements(array1: [Int], array2: [Int]) -> [Int] {
 let result5 = commonElements(array1: arrayA, array2: arrayB)
 print (result5)
 
+//6.Задание: Поиск общих друзей пользователей
+
+let friendList: [String: Set<String>] = ["Alice":["David", "Bob"], "Eve": ["David", "Bob"]]
+func findCommonFriends(user1: String, user2: String) -> Set<String>? {
+    guard let friends1 = friendList[user1], let friends2 = friendList[user2] else {
+        print("Один из пользователей не найден в списке друзей")
+        return nil
+    }
+    let result = friends1.intersection(friends2)
+    print("Общие друзья \(user1) и \(user2): \(result)")
+    return result
+}
+
+findCommonFriends(user1: "Alice", user2: "Eve")
+
+
