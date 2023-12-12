@@ -106,3 +106,35 @@ if let language = storage.getSetting(key: "Language") {
 
 storage.printAllSettings()
 
+//3.Задание: Простой англо-русский переводчик.
+
+let dictionary = ["hello": "привет", "world": "мир", "apple": "яблоко"]
+func translateWord(word: String) -> String? {
+    return dictionary[word]
+}
+func showMenu() {
+    print ("Простой англо-русский переводчик")
+    print ("1.Перевести слово")
+    print ("2.Выйти из приложения")
+    if let choice = readLine(), let option = Int(choice) {
+        switch option {
+        case 1:
+            print ("Введите слово на английском:")
+            if let inputWord = readLine() {
+                if let translation = translateWord(word: inputWord) {
+                    print ("Перевод: \(translation)")
+                } else {
+                    print ("Перевод не найден")
+                }
+            }
+            showMenu()
+        case 2:
+            print ("Выход из приложения")
+        default:
+            print ("Некорректный выбор. Попробуйте еще раз.")
+            showMenu()
+        }
+    }
+}
+showMenu()
+
